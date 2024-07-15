@@ -49,17 +49,15 @@
             SurnameField = new TextBox();
             NameField = new TextBox();
             label5 = new Label();
-            IdField = new TextBox();
             label6 = new Label();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            label1 = new Label();
             editorLabel = new Label();
             editorPicture = new PictureBox();
             panel4 = new Panel();
             SaveChangesButton = new Button();
-            EditSruffButton = new Button();
+            EditStuffButton = new Button();
             DeleteStuffButton = new Button();
             NewStuffButton = new Button();
             label9 = new Label();
@@ -127,6 +125,7 @@
             eraser.SizeMode = PictureBoxSizeMode.StretchImage;
             eraser.TabIndex = 0;
             eraser.TabStop = false;
+            eraser.Click += eraser_Click;
             // 
             // synchronization
             // 
@@ -186,12 +185,10 @@
             editorPanel.Controls.Add(SurnameField);
             editorPanel.Controls.Add(NameField);
             editorPanel.Controls.Add(label5);
-            editorPanel.Controls.Add(IdField);
             editorPanel.Controls.Add(label6);
             editorPanel.Controls.Add(label4);
             editorPanel.Controls.Add(label3);
             editorPanel.Controls.Add(label2);
-            editorPanel.Controls.Add(label1);
             editorPanel.Controls.Add(editorLabel);
             editorPanel.Controls.Add(editorPicture);
             editorPanel.Location = new Point(12, 452);
@@ -215,7 +212,7 @@
             // 
             // BirthDateField
             // 
-            BirthDateField.Location = new Point(460, 48);
+            BirthDateField.Location = new Point(460, 140);
             BirthDateField.Name = "BirthDateField";
             BirthDateField.Size = new Size(195, 23);
             BirthDateField.TabIndex = 15;
@@ -256,14 +253,14 @@
             // 
             // SurnameField
             // 
-            SurnameField.Location = new Point(115, 108);
+            SurnameField.Location = new Point(115, 78);
             SurnameField.Name = "SurnameField";
             SurnameField.Size = new Size(195, 23);
             SurnameField.TabIndex = 12;
             // 
             // NameField
             // 
-            NameField.Location = new Point(115, 78);
+            NameField.Location = new Point(115, 107);
             NameField.Name = "NameField";
             NameField.Size = new Size(195, 23);
             NameField.TabIndex = 11;
@@ -272,18 +269,11 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 11.25F, FontStyle.Italic);
-            label5.Location = new Point(326, 48);
+            label5.Location = new Point(326, 140);
             label5.Name = "label5";
             label5.Size = new Size(128, 18);
             label5.TabIndex = 6;
             label5.Text = "Дата рождения:";
-            // 
-            // IdField
-            // 
-            IdField.Location = new Point(115, 48);
-            IdField.Name = "IdField";
-            IdField.Size = new Size(195, 23);
-            IdField.TabIndex = 10;
             // 
             // label6
             // 
@@ -309,7 +299,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 11.25F, FontStyle.Italic);
-            label3.Location = new Point(29, 110);
+            label3.Location = new Point(29, 80);
             label3.Name = "label3";
             label3.Size = new Size(80, 18);
             label3.TabIndex = 4;
@@ -319,21 +309,11 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 11.25F, FontStyle.Italic);
-            label2.Location = new Point(66, 80);
+            label2.Location = new Point(66, 109);
             label2.Name = "label2";
             label2.Size = new Size(43, 18);
             label2.TabIndex = 3;
             label2.Text = "Имя:";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 11.25F, FontStyle.Italic);
-            label1.Location = new Point(82, 50);
-            label1.Name = "label1";
-            label1.Size = new Size(27, 18);
-            label1.TabIndex = 2;
-            label1.Text = "ID:";
             // 
             // editorLabel
             // 
@@ -359,7 +339,7 @@
             // 
             panel4.BackColor = Color.FromArgb(177, 171, 212);
             panel4.Controls.Add(SaveChangesButton);
-            panel4.Controls.Add(EditSruffButton);
+            panel4.Controls.Add(EditStuffButton);
             panel4.Controls.Add(DeleteStuffButton);
             panel4.Controls.Add(NewStuffButton);
             panel4.Location = new Point(686, 500);
@@ -377,17 +357,19 @@
             SaveChangesButton.TabIndex = 3;
             SaveChangesButton.Text = "Сохранить";
             SaveChangesButton.UseVisualStyleBackColor = false;
+            SaveChangesButton.Click += SaveChangesButton_Click;
             // 
-            // EditSruffButton
+            // EditStuffButton
             // 
-            EditSruffButton.BackColor = Color.FromArgb(231, 234, 239);
-            EditSruffButton.Font = new Font("Century Gothic", 11.25F, FontStyle.Italic);
-            EditSruffButton.Location = new Point(11, 91);
-            EditSruffButton.Name = "EditSruffButton";
-            EditSruffButton.Size = new Size(153, 37);
-            EditSruffButton.TabIndex = 2;
-            EditSruffButton.Text = "Изменить";
-            EditSruffButton.UseVisualStyleBackColor = false;
+            EditStuffButton.BackColor = Color.FromArgb(231, 234, 239);
+            EditStuffButton.Font = new Font("Century Gothic", 11.25F, FontStyle.Italic);
+            EditStuffButton.Location = new Point(11, 91);
+            EditStuffButton.Name = "EditStuffButton";
+            EditStuffButton.Size = new Size(153, 37);
+            EditStuffButton.TabIndex = 2;
+            EditStuffButton.Text = "Изменить";
+            EditStuffButton.UseVisualStyleBackColor = false;
+            EditStuffButton.Click += EditStuffButton_Click;
             // 
             // DeleteStuffButton
             // 
@@ -399,6 +381,7 @@
             DeleteStuffButton.TabIndex = 1;
             DeleteStuffButton.Text = "Удалить";
             DeleteStuffButton.UseVisualStyleBackColor = false;
+            DeleteStuffButton.Click += DeleteStuffButton_Click;
             // 
             // NewStuffButton
             // 
@@ -469,14 +452,12 @@
         private PictureBox editorPicture;
         private Panel panel4;
         private Label label2;
-        private Label label1;
         private Label label8;
         private Label label7;
         private Label label6;
         private Label label5;
         private Label label4;
         private Label label3;
-        private TextBox IdField;
         private TextBox NameField;
         private TextBox PatronymicField;
         private TextBox SurnameField;
@@ -486,7 +467,7 @@
         private TextBox PositionField;
         private Label label9;
         private Button SaveChangesButton;
-        private Button EditSruffButton;
+        private Button EditStuffButton;
         private Button DeleteStuffButton;
         private Button NewStuffButton;
     }

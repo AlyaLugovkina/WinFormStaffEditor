@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddStuffForm));
             panel1 = new Panel();
             panel2 = new Panel();
-            eraser = new PictureBox();
             info = new PictureBox();
             label2 = new Label();
             label1 = new Label();
@@ -53,7 +52,6 @@
             SaveChangesButton = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)eraser).BeginInit();
             ((System.ComponentModel.ISupportInitialize)info).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -74,27 +72,16 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(231, 234, 239);
-            panel2.Controls.Add(eraser);
             panel2.Controls.Add(info);
-            panel2.Location = new Point(443, 18);
+            panel2.Location = new Point(505, 18);
             panel2.Name = "panel2";
-            panel2.Size = new Size(119, 58);
+            panel2.Size = new Size(57, 58);
             panel2.TabIndex = 3;
-            // 
-            // eraser
-            // 
-            eraser.Image = (Image)resources.GetObject("eraser.Image");
-            eraser.Location = new Point(69, 14);
-            eraser.Name = "eraser";
-            eraser.Size = new Size(32, 32);
-            eraser.SizeMode = PictureBoxSizeMode.AutoSize;
-            eraser.TabIndex = 1;
-            eraser.TabStop = false;
             // 
             // info
             // 
             info.Image = (Image)resources.GetObject("info.Image");
-            info.Location = new Point(16, 14);
+            info.Location = new Point(14, 14);
             info.Name = "info";
             info.Size = new Size(32, 32);
             info.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -290,7 +277,6 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)eraser).EndInit();
             ((System.ComponentModel.ISupportInitialize)info).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
@@ -304,7 +290,6 @@
         private Label label2;
         private Label label1;
         private Panel panel2;
-        private PictureBox eraser;
         private PictureBox info;
         private TextBox PositionField;
         private TextBox EmploymentDateField;
