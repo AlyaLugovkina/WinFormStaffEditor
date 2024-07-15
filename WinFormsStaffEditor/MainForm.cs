@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic.ApplicationServices;
 using System.Data;
 using System.IO;
 
@@ -13,12 +15,12 @@ namespace WinFormsStaffEditor
     }
 
 
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         StaffContext staffDataBase = new StaffContext();
         int selectedRow;
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -87,6 +89,33 @@ namespace WinFormsStaffEditor
         private void synchronization_Click(object sender, EventArgs e)
         {
             RefreshDataGrid(dataGridView1);
+        }
+
+        private void NewStuffButton_Click(object sender, EventArgs e)
+        {
+            AddStuffForm addStuffForm = new AddStuffForm();
+            addStuffForm.Show();
+        }
+
+        private void Search(DataGridView dgv)
+        {
+            //r.Id + r.Name + r.Surname + r.Patronymic + r.Snils + r.BirthDate + r.EmploymentDate + r.Position
+            
+            dgv.Rows.Clear();
+
+            var searchResult = staffDataBase.Staff.Where(r => EF.Functions.
+                                Like(r.Id + r.Name + r.Surname +r.Patronymic +r.Snils +r.BirthDate +r.EmploymentDate+r.Position,
+                                                                                                "%" + textBoxSearch.Text + "%"));
+            
+            foreach (var result in searchResult) {
+                ReadSinglRow(dgv, result);
+            }
+
+        }
+
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            Search(dataGridView1);
         }
     }
 }

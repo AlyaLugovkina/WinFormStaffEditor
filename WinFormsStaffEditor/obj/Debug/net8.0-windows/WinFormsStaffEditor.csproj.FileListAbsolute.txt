@@ -143,7 +143,6 @@ M:\ms_vs\WinFormsStaffEditor\WinFormsStaffEditor\bin\Debug\net8.0-windows\runtim
 M:\ms_vs\WinFormsStaffEditor\WinFormsStaffEditor\bin\Debug\net8.0-windows\runtimes\win-x86\native\e_sqlite3.dll
 M:\ms_vs\WinFormsStaffEditor\WinFormsStaffEditor\bin\Debug\net8.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 M:\ms_vs\WinFormsStaffEditor\WinFormsStaffEditor\obj\Debug\net8.0-windows\WinFormsStaffEditor.csproj.AssemblyReference.cache
-M:\ms_vs\WinFormsStaffEditor\WinFormsStaffEditor\obj\Debug\net8.0-windows\WinFormsStaffEditor.Form1.resources
 M:\ms_vs\WinFormsStaffEditor\WinFormsStaffEditor\obj\Debug\net8.0-windows\WinFormsStaffEditor.csproj.GenerateResource.cache
 M:\ms_vs\WinFormsStaffEditor\WinFormsStaffEditor\obj\Debug\net8.0-windows\WinFormsStaffEditor.GeneratedMSBuildEditorConfig.editorconfig
 M:\ms_vs\WinFormsStaffEditor\WinFormsStaffEditor\obj\Debug\net8.0-windows\WinFormsStaffEditor.AssemblyInfoInputs.cache
@@ -157,3 +156,5 @@ M:\ms_vs\WinFormsStaffEditor\WinFormsStaffEditor\obj\Debug\net8.0-windows\WinFor
 M:\ms_vs\WinFormsStaffEditor\WinFormsStaffEditor\obj\Debug\net8.0-windows\WinFormsStaffEditor.genruntimeconfig.cache
 M:\ms_vs\WinFormsStaffEditor\WinFormsStaffEditor\obj\Debug\net8.0-windows\ref\WinFormsStaffEditor.dll
 M:\ms_vs\WinFormsStaffEditor\WinFormsStaffEditor\obj\Debug\net8.0-windows\WinFormsStaffEditor.Properties.Resources.resources
+M:\ms_vs\WinFormsStaffEditor\WinFormsStaffEditor\obj\Debug\net8.0-windows\WinFormsStaffEditor.MainForm.resources
+M:\ms_vs\WinFormsStaffEditor\WinFormsStaffEditor\obj\Debug\net8.0-windows\WinFormsStaffEditor.AddStuffForm.resources

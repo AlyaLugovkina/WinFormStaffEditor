@@ -1,6 +1,6 @@
 ﻿namespace WinFormsStaffEditor
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             topPanel = new Panel();
             topSearhEditPanel = new Panel();
             textBoxSearch = new TextBox();
@@ -77,7 +77,7 @@
             // 
             // topPanel
             // 
-            topPanel.BackColor = Color.FromArgb(230, 215, 135);
+            topPanel.BackColor = Color.FromArgb(237, 197, 171);
             topPanel.Controls.Add(topSearhEditPanel);
             topPanel.Controls.Add(staffPicture);
             topPanel.Controls.Add(staffLabel);
@@ -89,7 +89,7 @@
             // 
             // topSearhEditPanel
             // 
-            topSearhEditPanel.BackColor = Color.FromArgb(177, 171, 212);
+            topSearhEditPanel.BackColor = Color.FromArgb(231, 234, 239);
             topSearhEditPanel.Controls.Add(textBoxSearch);
             topSearhEditPanel.Controls.Add(searchImage);
             topSearhEditPanel.Controls.Add(eraser);
@@ -106,6 +106,7 @@
             textBoxSearch.Name = "textBoxSearch";
             textBoxSearch.Size = new Size(150, 32);
             textBoxSearch.TabIndex = 3;
+            textBoxSearch.TextChanged += textBoxSearch_TextChanged;
             // 
             // searchImage
             // 
@@ -161,17 +162,20 @@
             // 
             // dataGridView1
             // 
-            dataGridView1.BackgroundColor = Color.FromArgb(4, 130, 128);
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.BackgroundColor = Color.FromArgb(55, 116, 91);
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(9, 85);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.Size = new Size(853, 334);
             dataGridView1.TabIndex = 1;
             dataGridView1.CellClick += dataGridView1_CellClick;
             // 
             // editorPanel
             // 
-            editorPanel.BackColor = Color.FromArgb(164, 127, 98);
+            editorPanel.BackColor = Color.FromArgb(33, 112, 116);
             editorPanel.Controls.Add(PositionField);
             editorPanel.Controls.Add(EmploymentDateField);
             editorPanel.Controls.Add(BirthDateField);
@@ -365,7 +369,7 @@
             // 
             // SaveChangesButton
             // 
-            SaveChangesButton.BackColor = Color.FromArgb(230, 215, 135);
+            SaveChangesButton.BackColor = Color.FromArgb(231, 234, 239);
             SaveChangesButton.Font = new Font("Century Gothic", 11.25F, FontStyle.Italic);
             SaveChangesButton.Location = new Point(11, 130);
             SaveChangesButton.Name = "SaveChangesButton";
@@ -376,7 +380,7 @@
             // 
             // EditSruffButton
             // 
-            EditSruffButton.BackColor = Color.FromArgb(230, 215, 135);
+            EditSruffButton.BackColor = Color.FromArgb(231, 234, 239);
             EditSruffButton.Font = new Font("Century Gothic", 11.25F, FontStyle.Italic);
             EditSruffButton.Location = new Point(11, 91);
             EditSruffButton.Name = "EditSruffButton";
@@ -387,7 +391,7 @@
             // 
             // DeleteStuffButton
             // 
-            DeleteStuffButton.BackColor = Color.FromArgb(230, 215, 135);
+            DeleteStuffButton.BackColor = Color.FromArgb(231, 234, 239);
             DeleteStuffButton.Font = new Font("Century Gothic", 11.25F, FontStyle.Italic);
             DeleteStuffButton.Location = new Point(11, 52);
             DeleteStuffButton.Name = "DeleteStuffButton";
@@ -398,7 +402,7 @@
             // 
             // NewStuffButton
             // 
-            NewStuffButton.BackColor = Color.FromArgb(230, 215, 135);
+            NewStuffButton.BackColor = Color.FromArgb(231, 234, 239);
             NewStuffButton.Font = new Font("Century Gothic", 11.25F, FontStyle.Italic);
             NewStuffButton.Location = new Point(11, 13);
             NewStuffButton.Name = "NewStuffButton";
@@ -406,6 +410,7 @@
             NewStuffButton.TabIndex = 0;
             NewStuffButton.Text = "Новая запись";
             NewStuffButton.UseVisualStyleBackColor = false;
+            NewStuffButton.Click += NewStuffButton_Click;
             // 
             // label9
             // 
@@ -417,18 +422,18 @@
             label9.TabIndex = 4;
             label9.Text = "Управление записями";
             // 
-            // Form1
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(6, 188, 179);
+            BackColor = Color.FromArgb(139, 157, 119);
             ClientSize = new Size(874, 687);
             Controls.Add(label9);
             Controls.Add(panel4);
             Controls.Add(editorPanel);
             Controls.Add(dataGridView1);
             Controls.Add(topPanel);
-            Name = "Form1";
+            Name = "MainForm";
             Text = "Form1";
             Load += Form1_Load;
             topPanel.ResumeLayout(false);
