@@ -136,6 +136,7 @@
             synchronization.SizeMode = PictureBoxSizeMode.StretchImage;
             synchronization.TabIndex = 1;
             synchronization.TabStop = false;
+            synchronization.Click += synchronization_Click;
             // 
             // staffPicture
             // 
@@ -166,6 +167,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(853, 334);
             dataGridView1.TabIndex = 1;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             // 
             // editorPanel
             // 

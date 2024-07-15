@@ -1,28 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "M:\\ms_vs\\WinFormsStaffEditor\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{C4C099E3-BE89-42C8-87D7-5291D6FBA2CB}|WinFormsStaffEditor\\WinFormsStaffEditor.csproj|m:\\ms_vs\\winformsstaffeditor\\winformsstaffeditor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4C099E3-BE89-42C8-87D7-5291D6FBA2CB}|WinFormsStaffEditor\\WinFormsStaffEditor.csproj|solutionrelative:winformsstaffeditor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4C099E3-BE89-42C8-87D7-5291D6FBA2CB}|WinFormsStaffEditor\\WinFormsStaffEditor.csproj|m:\\ms_vs\\winformsstaffeditor\\winformsstaffeditor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C4C099E3-BE89-42C8-87D7-5291D6FBA2CB}|WinFormsStaffEditor\\WinFormsStaffEditor.csproj|solutionrelative:winformsstaffeditor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4C099E3-BE89-42C8-87D7-5291D6FBA2CB}|WinFormsStaffEditor\\WinFormsStaffEditor.csproj|m:\\ms_vs\\winformsstaffeditor\\winformsstaffeditor\\staff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4C099E3-BE89-42C8-87D7-5291D6FBA2CB}|WinFormsStaffEditor\\WinFormsStaffEditor.csproj|solutionrelative:winformsstaffeditor\\staff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4C099E3-BE89-42C8-87D7-5291D6FBA2CB}|WinFormsStaffEditor\\WinFormsStaffEditor.csproj|m:\\ms_vs\\winformsstaffeditor\\winformsstaffeditor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4C099E3-BE89-42C8-87D7-5291D6FBA2CB}|WinFormsStaffEditor\\WinFormsStaffEditor.csproj|solutionrelative:winformsstaffeditor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|M:\\ms_vs\\WinFormsStaffEditor\\WinFormsStaffEditor\\StaffContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:WinFormsStaffEditor\\StaffContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -30,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -43,70 +22,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Staff.cs",
-              "DocumentMoniker": "M:\\ms_vs\\WinFormsStaffEditor\\WinFormsStaffEditor\\Staff.cs",
-              "RelativeDocumentMoniker": "WinFormsStaffEditor\\Staff.cs",
-              "ToolTip": "M:\\ms_vs\\WinFormsStaffEditor\\WinFormsStaffEditor\\Staff.cs",
-              "RelativeToolTip": "WinFormsStaffEditor\\Staff.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC0AAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T11:05:55.487Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "M:\\ms_vs\\WinFormsStaffEditor\\WinFormsStaffEditor\\Form1.cs",
-              "RelativeDocumentMoniker": "WinFormsStaffEditor\\Form1.cs",
-              "ToolTip": "M:\\ms_vs\\WinFormsStaffEditor\\WinFormsStaffEditor\\Form1.cs",
-              "RelativeToolTip": "WinFormsStaffEditor\\Form1.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T10:53:53.718Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "StaffContext.cs",
-              "DocumentMoniker": "M:\\ms_vs\\WinFormsStaffEditor\\WinFormsStaffEditor\\StaffContext.cs",
-              "RelativeDocumentMoniker": "WinFormsStaffEditor\\StaffContext.cs",
-              "ToolTip": "M:\\ms_vs\\WinFormsStaffEditor\\WinFormsStaffEditor\\StaffContext.cs",
-              "RelativeToolTip": "WinFormsStaffEditor\\StaffContext.cs",
-              "ViewState": "AQIAAC4AAAAAAAAAAAAcwEwAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T10:11:23.115Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "M:\\ms_vs\\WinFormsStaffEditor\\WinFormsStaffEditor\\Program.cs",
-              "RelativeDocumentMoniker": "WinFormsStaffEditor\\Program.cs",
-              "ToolTip": "M:\\ms_vs\\WinFormsStaffEditor\\WinFormsStaffEditor\\Program.cs",
-              "RelativeToolTip": "WinFormsStaffEditor\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T09:52:50.958Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
-              "DocumentMoniker": "M:\\ms_vs\\WinFormsStaffEditor\\WinFormsStaffEditor\\Form1.cs",
-              "RelativeDocumentMoniker": "WinFormsStaffEditor\\Form1.cs",
-              "ToolTip": "M:\\ms_vs\\WinFormsStaffEditor\\WinFormsStaffEditor\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
-              "RelativeToolTip": "WinFormsStaffEditor\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T07:56:46.812Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]"
             }
           ]
         },
