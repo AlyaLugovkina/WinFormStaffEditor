@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WinFormsStaffEditor")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2c9424d3c353c7acb860d1053b6dd2e4d310ece")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ebb4d09e2f5c825bf67bd6879c882fa82af60291")]
 [assembly: System.Reflection.AssemblyProductAttribute("WinFormsStaffEditor")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WinFormsStaffEditor")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

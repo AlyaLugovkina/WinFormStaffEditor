@@ -6,6 +6,7 @@ using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WinFormsStaffEditor
 {
@@ -13,7 +14,9 @@ namespace WinFormsStaffEditor
     {
         Existed,
         Modifided,
-        Deleted
+        Deleted,
+        New,
+        ModifidedNew
     }
 
 
@@ -54,20 +57,14 @@ namespace WinFormsStaffEditor
             {
                 ReadSinglRow(dgv, employee);
             }
-
-
-
         }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             CreateCollumns();
             RefreshDataGrid(dataGridView1);
-            dataGridView1.Columns["isNew"].Visible = false;
+            //dataGridView1.Columns["isNew"].Visible = false;
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -77,12 +74,16 @@ namespace WinFormsStaffEditor
             {
                 DataGridViewRow row = dataGridView1.Rows[selectedRow];
 
+                DateOnly bDate = (DateOnly)row.Cells["BirthDate"].Value;
+                DateOnly eDate = (DateOnly)row.Cells["EmploymentDate"].Value;
+
+
                 NameField.Text = row.Cells["Name"].Value.ToString();
                 SurnameField.Text = row.Cells["Surname"].Value.ToString();
                 PatronymicField.Text = row.Cells["Patronymic"].Value.ToString();
                 SnilsField.Text = row.Cells["Snils"].Value.ToString();
-                BirthDateField.Text = row.Cells["BirthDate"].Value.ToString();
-                EmploymentDateField.Text = row.Cells["EmploymentDate"].Value.ToString();
+                BirthDateField.Text = bDate.ToString("yyyy-MM-dd");
+                EmploymentDateField.Text = eDate.ToString("yyyy-MM-dd");
                 PositionField.Text = row.Cells["Position"].Value.ToString();
 
             }
@@ -96,12 +97,29 @@ namespace WinFormsStaffEditor
         private void NewStuffButton_Click(object sender, EventArgs e)
         {
             AddStuffForm addStuffForm = new AddStuffForm();
-            addStuffForm.Show();
+            DialogResult result = addStuffForm.ShowDialog();
+            if (result == DialogResult.Cancel && RowData.newStuff != null)
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    if(RowData.newStuff.Snils == dataGridView1.Rows[i].Cells["snils"].Value.ToString())
+                    {
+                        MessageBox.Show("Введеный снилс уже зарегистрирован! Попробуйте создать новый", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
+                ReadSinglRow(dataGridView1, RowData.newStuff);
+                int n = dataGridView1.Rows.Count;
+                dataGridView1.Rows[n - 1].Cells["isNew"].Value = RowState.New;
+                RowData.newStuff = null;
+                MessageBox.Show("Запись успешно добавлена", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
 
         private void Search(DataGridView dgv)
         {
-            //r.Id + r.Name + r.Surname + r.Patronymic + r.Snils + r.BirthDate + r.EmploymentDate + r.Position
 
             dgv.Rows.Clear();
 
@@ -122,6 +140,24 @@ namespace WinFormsStaffEditor
             {
                 var rowState = (RowState)dataGridView1.Rows[i].Cells["isNew"].Value;
 
+                if (rowState == RowState.Existed)
+                    continue;
+
+                if (rowState == RowState.New || rowState == RowState.ModifidedNew)
+                {
+                    Staff newEmployee = new Staff
+                    {
+                        Name = dataGridView1.Rows[i].Cells["name"].Value.ToString(),
+                        Surname = dataGridView1.Rows[i].Cells["surname"].Value.ToString(),
+                        Patronymic = dataGridView1.Rows[i].Cells["Patronymic"].Value.ToString(),
+                        BirthDate = (DateOnly)dataGridView1.Rows[i].Cells["BirthDate"].Value,
+                        Snils = dataGridView1.Rows[i].Cells["snils"].Value.ToString(),
+                        Position = dataGridView1.Rows[i].Cells["position"].Value.ToString(),
+                        EmploymentDate = (DateOnly)dataGridView1.Rows[i].Cells["EmploymentDate"].Value
+                    };
+
+                    staffDataBase.Staff.Add(newEmployee);
+                }
 
                 if (rowState == RowState.Deleted)
                 {
@@ -132,53 +168,32 @@ namespace WinFormsStaffEditor
                         staffDataBase.Staff.Remove(deletedStaff);
                     }
                 }
-                staffDataBase.SaveChanges();
+
                 if (rowState == RowState.Modifided)
                 {
                     var id = Convert.ToUInt32(dataGridView1.Rows[i].Cells["id"].Value);
-                    var name = dataGridView1.Rows[i].Cells["name"].Value.ToString();
-                    var surname = dataGridView1.Rows[i].Cells["surname"].Value.ToString();
-                    var dateFormat = "yyyy-MM-dd";
-                    var patronymic = dataGridView1.Rows[i].Cells["Patronymic"].Value.ToString();
-                    var snils = dataGridView1.Rows[i].Cells["snils"].Value.ToString();
-                    var position = dataGridView1.Rows[i].Cells["position"].Value.ToString();
-                    DateOnly birthDate, employmentDate = new DateOnly();
-
-                    DateOnly.TryParseExact(BirthDateField.Text, dateFormat, DateTimeFormatInfo.InvariantInfo, DateTimeStyles.None, out birthDate);
-                    DateOnly.TryParseExact(EmploymentDateField.Text, dateFormat, DateTimeFormatInfo.InvariantInfo, DateTimeStyles.None, out employmentDate);
 
                     var updatedStaff = staffDataBase.Staff.Single(r => r.Id == id);
                     if (updatedStaff != null)
                     {
-                        updatedStaff.Name = name;
-                        updatedStaff.Surname = surname;
-                        updatedStaff.Patronymic = patronymic;
-                        updatedStaff.Position = position;
-                        updatedStaff.Snils = snils;
-                        updatedStaff.BirthDate = birthDate;
-                        updatedStaff.EmploymentDate = employmentDate;
+                        updatedStaff.Name = dataGridView1.Rows[i].Cells["name"].Value.ToString();
+                        updatedStaff.Surname = dataGridView1.Rows[i].Cells["surname"].Value.ToString();
+                        updatedStaff.Patronymic = dataGridView1.Rows[i].Cells["Patronymic"].Value.ToString();
+                        updatedStaff.Position = dataGridView1.Rows[i].Cells["position"].Value.ToString();
+                        updatedStaff.Snils = dataGridView1.Rows[i].Cells["snils"].Value.ToString();
+                        updatedStaff.BirthDate = (DateOnly)dataGridView1.Rows[i].Cells["BirthDate"].Value;
+                        updatedStaff.EmploymentDate = (DateOnly)dataGridView1.Rows[i].Cells["EmploymentDate"].Value;
 
                         staffDataBase.Staff.Update(updatedStaff);
                     }
 
-                    //Staff updatedEmployee = new Staff
-                    //{
-                    //    Id = id,
-                    //    Name = name,
-                    //    Surname = surname,
-                    //    Patronymic = patronymic,
-                    //    BirthDate = birthDate,
-                    //    Snils = snils,
-                    //    Position = position,
-                    //    EmploymentDate = employmentDate
-                    //};
-
-                    //staffDataBase.Staff.Update(updatedEmployee);
-                    //staffDataBase.SaveChanges();
-
                 }
+
                 staffDataBase.SaveChanges();
+
             }
+           
+                
         }
 
         private void DeleteRow()
@@ -213,7 +228,9 @@ namespace WinFormsStaffEditor
         private void Change()
         {
             var selectedRowIndex = dataGridView1.CurrentCell.RowIndex;
+            RowState state = (RowState)dataGridView1.Rows[selectedRowIndex].Cells["isNew"].Value;
 
+            var ID = dataGridView1.Rows[selectedRowIndex].Cells["id"].Value;
             var Name = NameField.Text;
             var Surname = SurnameField.Text;
             var Patronymic = PatronymicField.Text;
@@ -222,33 +239,77 @@ namespace WinFormsStaffEditor
             var Position = PositionField.Text;
             DateOnly BirthDate, EmploymentDate = new DateOnly();
 
+            var isSnilsExist = staffDataBase.Staff.Where(r => r.Snils == Snils);
+            bool sameRow = false;
 
-            if (!DateOnly.TryParseExact(BirthDateField.Text, dateFormat, DateTimeFormatInfo.InvariantInfo, DateTimeStyles.None, out BirthDate)
-                || !DateOnly.TryParseExact(EmploymentDateField.Text, dateFormat, DateTimeFormatInfo.InvariantInfo, DateTimeStyles.None, out EmploymentDate))
+            try
             {
-                MessageBox.Show("Введите дату в указаном формате: ГГГГ-ММ-ДД", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                foreach(Staff stuff in isSnilsExist)
+                {
+                    if(stuff.Id == Convert.ToUInt32(ID))
+                        sameRow = true;
+                }
+            
+                if (isSnilsExist.Any() && !sameRow)
+                {
+                    MessageBox.Show("Введеный снилс уже сущесвует в базе данных", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!DateOnly.TryParseExact(BirthDateField.Text, dateFormat, DateTimeFormatInfo.InvariantInfo, DateTimeStyles.None, out BirthDate)
+                    || !DateOnly.TryParseExact(EmploymentDateField.Text, dateFormat, DateTimeFormatInfo.InvariantInfo, DateTimeStyles.None, out EmploymentDate))
+                {
+                    MessageBox.Show("Введите дату в указаном формате: ГГГГ-ММ-ДД", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if (!double.TryParse(SnilsField.Text, out double num))
+                {
+                    MessageBox.Show("В поле СНИЛС должны содержаться только цифры!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if (state == RowState.New)
+                {
+                    dataGridView1.Rows[selectedRowIndex].SetValues(dataGridView1.Rows[selectedRowIndex].Cells["id"].Value, Surname, Name, Patronymic,
+                                                                    BirthDate, Snils, Position, EmploymentDate);
+                    dataGridView1.Rows[selectedRowIndex].Cells["isNew"].Value = RowState.ModifidedNew;
+                    return;
+                }
+                else
+                {
+                    dataGridView1.Rows[selectedRowIndex].SetValues(dataGridView1.Rows[selectedRowIndex].Cells["id"].Value, Surname, Name, Patronymic,
+                                                                    BirthDate, Snils, Position, EmploymentDate);
+                    dataGridView1.Rows[selectedRowIndex].Cells["isNew"].Value = RowState.Modifided;
+                    return;
+                }
             }
-            else if (!double.TryParse(SnilsField.Text, out double num))
+            catch (DbUpdateConcurrencyException ex)
             {
-                MessageBox.Show("В поле СНИЛС должны содержаться только цифры!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                dataGridView1.Rows[selectedRowIndex].SetValues(dataGridView1.Rows[selectedRowIndex].Cells["id"].Value, Surname, Name, Patronymic,
-                                                                BirthDate, Snils, Position, EmploymentDate);
-                dataGridView1.Rows[selectedRowIndex].Cells["isNew"].Value = RowState.Modifided;
+                var entry = ex.Entries.Single();
+                var databaseValues = (Staff)entry.GetDatabaseValues().ToObject();
+                var clientValues = (Staff)entry.Entity;
+                if(databaseValues.Surname != clientValues.Surname)
+                   MessageBox.Show("Данные уже изменены! Обновите базу","Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void EditStuffButton_Click(object sender, EventArgs e)
         {
-            Change();
+            if (NameField.Text == "" || SurnameField.Text == "" || PatronymicField.Text == "" || BirthDateField.Text == ""
+                || SnilsField.Text == "" || PositionField.Text == "" || EmploymentDateField.Text == "")
+            {
+                MessageBox.Show("Все поля должны быть заполнены!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                Change();
+            }
         }
 
-        private void eraser_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            DeleteRow();
-            Update();
+            MessageBox.Show("В таблице отображается информация о персонале. При нажатии на любое значение записи информация копируется в поле вниз. " +
+                "При выделенной записи вы можете нажать кнопку \"Удалить\" или \"Изменить\". " +
+                "Во втором случае вам необходимо внести изменения в полях под таблицей и потом нажать кнопку, тогда данные обновятся. " +
+                "Кнопка \"Новая запись\" вызовет окно для создания новой записи в таблицу. Когда все изменения в таблицу внесены, нажмите кнопку \"Сохранить\". " +
+                "Рядом с кнопкой справки находится кнопка для синхронизации. Используйте её после сохранения для обновления данных в таблице.", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
     }
 }

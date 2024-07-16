@@ -118,6 +118,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
+        6AAAAOgBhtX2rwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANxSURBVFhHtVZL
+        TxRBEJ6LM4Pi42KiMTGKYnxEE3+KRkWv+hs0elLUaGI8K6jcvPg8ekOYXYRh9WCCB3wQiMRElkTeREAt
+        6+vqYR9TvTu4WMmXne2vXt1dXd1eVqHY20K9/jnqDR5SFBYoCoqMZQv+5rFc8IBy/lnq8zZbs8aF8sEB
+        ivwuDrLAoIyA7iNGq3WzdqF+r4kd3GWsMLQgWbDMK3aHerzQus0mbNjKGCpz1CD8Acpt3Gnd1xaKNhxn
+        I+yv4qghjHN9HLNhdGElzPx/BE8wTj2bdthwlYJ94v16rxhVonCYaOQyUfEZ0fQbAb4xVjik21QgfIf6
+        smFLwiQKTjGwKBwhmnxJRH8EC8NEU68Fix9L45MvJEnNR4Jc2G7DishRq1HtH04R/ZojWpkmGr1KFLek
+        deJ9zLWz3gxjlm1OpnVKmKvYCnvONUUJTr+JZmKigd26TjkG9hDNFsSmVhK54J4ER4dzNRksO2aO4Pmt
+        ad6F/DZJAivhrot50zFNe9UVZM+x7K6Zj90QaBxWAttRfK7zBn4bJ4DerpAoJBTV6LU0l2D4AuO8zgFj
+        18XH4EGdj4JO3n9zsaTJkStirBVcVsR7xcfIJZ3nDonjN5kmGDjbOF4al2DspkDjEix+Yl9PdS4KJpDA
+        UtWgYKaf6Ed3erwcU5FA4xKgT0z36VwU/HQngA4HY41LkCmBHvaV1zmbwL9vQZYEFj/X2wJXEXJvN0XI
+        HU7jgXoJDLaKjy8Xdd4UIZ5RGrl6DLm9ajxQLwH0CPhwH8MOToDfcDopFwuaCZqKxn9/LNA4HEF0Qvfy
+        EzfB07iGm/nPfIoEsApwgraK9prSaWKEVWMM04rfSvLu2c8jttwH8oDUlORCwcWCJFwrUQ7MPLmMhk7o
+        OgBvvQkO4QG8hPC81pWRBFYCM0JNxPvTOig47HmiVys4jn4+bLHhRczrVVcW4FbDxYKigqDD4YwD+DbC
+        HI6ve9ktwts2bEnMkwyvV9WgDHCO3l58UvYk42+M1Q0M+P30ygts2ErBK4WVvqaN1g3fqLtplw2nC57O
+        rDheZbge4In5R22Y2kK55u1sEFU5aAC87K7nuEuwT3i9sgO9R2TDEvWGt5x7nkVMXfADkp2tJRHodqaO
+        WiMiHdNvY8cd/Bvz7wQDVznA32bsPv+eWe1wdcXz/gKrQ4VO6Bc7GQAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="searchImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
@@ -141,25 +162,6 @@
         7XkF81svwgpo4ND2PLV9KeY1mnNubhG5hEdZ7vFmTIzLuVLzTNQCWiFM0gZTI9OL4cCTLOX2w1oRwY39
         hLeKKkVcS7YpW1no5iEZDj4Fs6U15pHA3zcjoYdYyOZjTRH/tzkHvaJ0Tqxte13dfwA6ZBuxMooDAAAA
         AElFTkSuQmCC
-</value>
-  </data>
-  <data name="eraser.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        qAAAAKgBefSzxgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAALUSURBVFhHrZZN
-        axNRFIZnJuajxYW0YNVqKVJojCARLCZthZKFbdM0aulGLWrrzp21il9VihsXQlemC6UgFNy48z9IEboX
-        XLlw16ILCzZNPJ53MredmZwkN9MMPMnMneQ87wTuSwwiail8JMKWtRKzrM2IZa3ydVL6nEJcDAofecs0
-        d0e7juysDfTTdHdn0TSMMq/flD4PxMUgKPnj/lNEU5f2WD53muqFqFoIgpI/YfnO1WEqJPto+8qQVgjP
-        RRCU/Kkjzx/vpJNtUfqTH9T6JTzDmkXJn8W98u+XL3jk9UJUDdVFyZ/He7TkCn8IcXgjgsoVrhBJUVAP
-        JV9kOYZ9HjxLve0xbbkCW9TuCUlSCyV/caaHSteG6Wf2ojhcB/QEykoUSSj5S5ZjwFYuTXd7j1UN1gVl
-        hcYUZX4gNy1rNxwKlTcy58WBzYCywsPw3IQodKPk2blHlJ64XjocjZYOEgJl5cgn7fl+oRu3vLD+i95+
-        2TpQCJSVW2473EI3Sj4+99CWK4KGQFn55bbHfbG36MjHZhc88qAh0BeOPFflqlpQ8jsPRLlCN0Q9ue3z
-        XDjy0dvzotRPoxAoq3pysH+i5Lfui7Ja1AqBsnLkE26hn8oLyy0rVErnbvyTJI3wh0BZ6cgBjoTFT87v
-        tPhxXRTooEKgrHTlwAiHwysDqXQx1tZOs0vvxOG6oC+ch8lKMgkjEottFj6s0b35Beo4eoKWPm2IwxtR
-        kYeakgMjEomsTk5NF3/83qahkQx1dHU3HQJlFUQOcCRN0yy/erNMQUKgrILKQeWF/x4FCYGycuTj/sG6
-        7J80GQJldVA58F5ohkBZtUIOqhekELw7sEXREygrZ6uN+b8bBHnRFwJbFD3B6xQK2U/eEjkQF4EKgS2K
-        nkBZIQDzmhlpQMo1J8XEnfMYg/v8Z9K5r04k+MjwE3/ln1zJdfnL9Dng/BtziJlhcP99xUHGf6gm3lcW
-        3ekxAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="synchronization.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

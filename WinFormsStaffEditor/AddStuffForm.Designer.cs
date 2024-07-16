@@ -87,6 +87,7 @@
             info.SizeMode = PictureBoxSizeMode.AutoSize;
             info.TabIndex = 0;
             info.TabStop = false;
+            info.Click += info_Click;
             // 
             // label2
             // 
@@ -175,14 +176,14 @@
             // 
             // SurnameField
             // 
-            SurnameField.Location = new Point(204, 183);
+            SurnameField.Location = new Point(204, 154);
             SurnameField.Name = "SurnameField";
             SurnameField.Size = new Size(195, 23);
             SurnameField.TabIndex = 28;
             // 
             // NameField
             // 
-            NameField.Location = new Point(204, 153);
+            NameField.Location = new Point(204, 183);
             NameField.Name = "NameField";
             NameField.Size = new Size(195, 23);
             NameField.TabIndex = 27;
@@ -221,7 +222,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 11.25F, FontStyle.Italic);
-            label3.Location = new Point(118, 185);
+            label3.Location = new Point(118, 156);
             label3.Name = "label3";
             label3.Size = new Size(80, 18);
             label3.TabIndex = 20;
@@ -231,7 +232,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Century Gothic", 11.25F, FontStyle.Italic);
-            label9.Location = new Point(155, 155);
+            label9.Location = new Point(155, 185);
             label9.Name = "label9";
             label9.Size = new Size(43, 18);
             label9.TabIndex = 19;
