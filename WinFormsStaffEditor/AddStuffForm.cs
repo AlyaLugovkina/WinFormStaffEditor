@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,28 +18,35 @@ namespace WinFormsStaffEditor
     {
         StaffContext staffDataBase = new StaffContext();
 
+        private DataGridView dgv { get; set; }
+
         public AddStuffForm()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
-            MessageBox.Show("Введите дату в формате ГГГГ-ММ-ДД","Внимание!",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("Введите дату в формате ГГГГ-ММ-ДД", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void SaveChangesButton_Click(object sender, EventArgs e)
         {
-            var newName = NameField.Text;
-            var newSurname = SurnameField.Text;
-            var newPatronymic = PatronymicField.Text;
-            var newSnils = SnilsField.Text;
+
+            if (NameField.Text == "" || SurnameField.Text == "" || PatronymicField.Text == "" || BirthDateField.Text == ""
+                || SnilsField.Text == "" || PositionField.Text == "" || EmploymentDateField.Text == "")
+            {
+                MessageBox.Show("Все поля должны быть заполнены!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             var dateFormat = "yyyy-MM-dd";
-            var newPosition = PositionField.Text;
+
             DateOnly newBirthDate, newEmploymentDate = new DateOnly();
-            if (!DateOnly.TryParseExact(BirthDateField.Text, dateFormat, DateTimeFormatInfo.InvariantInfo, DateTimeStyles.None, out newBirthDate) 
+
+            if (!DateOnly.TryParseExact(BirthDateField.Text, dateFormat, DateTimeFormatInfo.InvariantInfo, DateTimeStyles.None, out newBirthDate)
                 || !DateOnly.TryParseExact(EmploymentDateField.Text, dateFormat, DateTimeFormatInfo.InvariantInfo, DateTimeStyles.None, out newEmploymentDate))
             {
                 MessageBox.Show("Введите дату в указаном формате: ГГГГ-ММ-ДД", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if(!double.TryParse(SnilsField.Text, out double num))
+            else if (!double.TryParse(SnilsField.Text, out double num))
             {
                 MessageBox.Show("В поле СНИЛС должны содержаться только цифры!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -46,19 +54,22 @@ namespace WinFormsStaffEditor
             {
                 Staff newEmployee = new Staff
                 {
-                    Name = newName,
-                    Surname = newSurname,
-                    Patronymic = newPatronymic,
+                    Name = NameField.Text,
+                    Surname = SurnameField.Text,
+                    Patronymic = PatronymicField.Text,
                     BirthDate = newBirthDate,
-                    Snils = newSnils,
-                    Position = newPosition,
+                    Snils = SnilsField.Text,
+                    Position = PositionField.Text,
                     EmploymentDate = newEmploymentDate
                 };
-                staffDataBase.Staff.Add(newEmployee);
-                MessageBox.Show("Запись успешно добавлена", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RowData.newStuff = newEmployee;
+                this.Close();
             }
-            staffDataBase.SaveChanges();
+        }
 
+        private void info_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Необходимо заполнить все поля для того, чтобы создать нового пользователя. Когда редактирование будет завершено нажмите кнопку \"Сохранить\".", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
     }
 }

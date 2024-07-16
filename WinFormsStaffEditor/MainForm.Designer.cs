@@ -2,6 +2,10 @@
 {
     partial class MainForm
     {
+
+
+
+        protected DataGridView MainDataGreed { get; set; }
         /// <summary>
         ///  Required designer variable.
         /// </summary>
@@ -31,9 +35,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             topPanel = new Panel();
             topSearhEditPanel = new Panel();
+            pictureBox1 = new PictureBox();
             textBoxSearch = new TextBox();
             searchImage = new PictureBox();
-            eraser = new PictureBox();
             synchronization = new PictureBox();
             staffPicture = new PictureBox();
             staffLabel = new Label();
@@ -63,8 +67,8 @@
             label9 = new Label();
             topPanel.SuspendLayout();
             topSearhEditPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)searchImage).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)eraser).BeginInit();
             ((System.ComponentModel.ISupportInitialize)synchronization).BeginInit();
             ((System.ComponentModel.ISupportInitialize)staffPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -88,18 +92,29 @@
             // topSearhEditPanel
             // 
             topSearhEditPanel.BackColor = Color.FromArgb(231, 234, 239);
+            topSearhEditPanel.Controls.Add(pictureBox1);
             topSearhEditPanel.Controls.Add(textBoxSearch);
             topSearhEditPanel.Controls.Add(searchImage);
-            topSearhEditPanel.Controls.Add(eraser);
             topSearhEditPanel.Controls.Add(synchronization);
-            topSearhEditPanel.Location = new Point(533, 12);
+            topSearhEditPanel.Location = new Point(523, 12);
             topSearhEditPanel.Name = "topSearhEditPanel";
-            topSearhEditPanel.Size = new Size(329, 46);
+            topSearhEditPanel.Size = new Size(339, 46);
             topSearhEditPanel.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(12, 8);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(32, 32);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // textBoxSearch
             // 
-            textBoxSearch.Location = new Point(164, 8);
+            textBoxSearch.Location = new Point(181, 8);
             textBoxSearch.Multiline = true;
             textBoxSearch.Name = "textBoxSearch";
             textBoxSearch.Size = new Size(150, 32);
@@ -109,28 +124,17 @@
             // searchImage
             // 
             searchImage.Image = (Image)resources.GetObject("searchImage.Image");
-            searchImage.Location = new Point(126, 8);
+            searchImage.Location = new Point(143, 8);
             searchImage.Name = "searchImage";
             searchImage.Size = new Size(32, 32);
             searchImage.SizeMode = PictureBoxSizeMode.StretchImage;
             searchImage.TabIndex = 2;
             searchImage.TabStop = false;
             // 
-            // eraser
-            // 
-            eraser.Image = (Image)resources.GetObject("eraser.Image");
-            eraser.Location = new Point(14, 8);
-            eraser.Name = "eraser";
-            eraser.Size = new Size(32, 32);
-            eraser.SizeMode = PictureBoxSizeMode.StretchImage;
-            eraser.TabIndex = 0;
-            eraser.TabStop = false;
-            eraser.Click += eraser_Click;
-            // 
             // synchronization
             // 
             synchronization.Image = (Image)resources.GetObject("synchronization.Image");
-            synchronization.Location = new Point(62, 8);
+            synchronization.Location = new Point(75, 8);
             synchronization.Name = "synchronization";
             synchronization.Size = new Size(32, 32);
             synchronization.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -198,28 +202,28 @@
             // 
             // PositionField
             // 
-            PositionField.Location = new Point(460, 108);
+            PositionField.Location = new Point(461, 105);
             PositionField.Name = "PositionField";
             PositionField.Size = new Size(195, 23);
             PositionField.TabIndex = 17;
             // 
             // EmploymentDateField
             // 
-            EmploymentDateField.Location = new Point(460, 78);
+            EmploymentDateField.Location = new Point(461, 143);
             EmploymentDateField.Name = "EmploymentDateField";
             EmploymentDateField.Size = new Size(195, 23);
             EmploymentDateField.TabIndex = 16;
             // 
             // BirthDateField
             // 
-            BirthDateField.Location = new Point(460, 140);
+            BirthDateField.Location = new Point(116, 187);
             BirthDateField.Name = "BirthDateField";
             BirthDateField.Size = new Size(195, 23);
             BirthDateField.TabIndex = 15;
             // 
             // SnilsField
             // 
-            SnilsField.Location = new Point(115, 168);
+            SnilsField.Location = new Point(461, 67);
             SnilsField.Name = "SnilsField";
             SnilsField.Size = new Size(195, 23);
             SnilsField.TabIndex = 14;
@@ -228,7 +232,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Century Gothic", 11.25F, FontStyle.Italic);
-            label8.Location = new Point(340, 80);
+            label8.Location = new Point(341, 145);
             label8.Name = "label8";
             label8.Size = new Size(114, 18);
             label8.TabIndex = 9;
@@ -238,7 +242,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Century Gothic", 11.25F, FontStyle.Italic);
-            label7.Location = new Point(360, 108);
+            label7.Location = new Point(361, 105);
             label7.Name = "label7";
             label7.Size = new Size(94, 18);
             label7.TabIndex = 8;
@@ -246,32 +250,31 @@
             // 
             // PatronymicField
             // 
-            PatronymicField.Location = new Point(115, 138);
+            PatronymicField.Location = new Point(116, 146);
             PatronymicField.Name = "PatronymicField";
             PatronymicField.Size = new Size(195, 23);
             PatronymicField.TabIndex = 13;
             // 
             // SurnameField
             // 
-            SurnameField.Location = new Point(115, 78);
+            SurnameField.Location = new Point(116, 67);
             SurnameField.Name = "SurnameField";
             SurnameField.Size = new Size(195, 23);
             SurnameField.TabIndex = 12;
             // 
             // NameField
             // 
-            NameField.Location = new Point(115, 107);
+            NameField.Location = new Point(116, 105);
             NameField.Name = "NameField";
             NameField.Size = new Size(195, 23);
             NameField.TabIndex = 11;
             // 
             // label5
             // 
-            label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 11.25F, FontStyle.Italic);
-            label5.Location = new Point(326, 140);
+            label5.Location = new Point(18, 172);
             label5.Name = "label5";
-            label5.Size = new Size(128, 18);
+            label5.Size = new Size(102, 38);
             label5.TabIndex = 6;
             label5.Text = "Дата рождения:";
             // 
@@ -279,7 +282,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Century Gothic", 11.25F, FontStyle.Italic);
-            label6.Location = new Point(41, 170);
+            label6.Location = new Point(387, 69);
             label6.Name = "label6";
             label6.Size = new Size(68, 18);
             label6.TabIndex = 7;
@@ -289,7 +292,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Century Gothic", 11.25F, FontStyle.Italic);
-            label4.Location = new Point(28, 140);
+            label4.Location = new Point(29, 148);
             label4.Name = "label4";
             label4.Size = new Size(81, 18);
             label4.TabIndex = 5;
@@ -299,7 +302,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 11.25F, FontStyle.Italic);
-            label3.Location = new Point(29, 80);
+            label3.Location = new Point(30, 67);
             label3.Name = "label3";
             label3.Size = new Size(80, 18);
             label3.TabIndex = 4;
@@ -309,7 +312,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 11.25F, FontStyle.Italic);
-            label2.Location = new Point(66, 109);
+            label2.Location = new Point(67, 110);
             label2.Name = "label2";
             label2.Size = new Size(43, 18);
             label2.TabIndex = 3;
@@ -319,7 +322,7 @@
             // 
             editorLabel.AutoSize = true;
             editorLabel.Font = new Font("Century Gothic", 18F, FontStyle.Italic);
-            editorLabel.Location = new Point(73, 3);
+            editorLabel.Location = new Point(68, 13);
             editorLabel.Name = "editorLabel";
             editorLabel.Size = new Size(105, 28);
             editorLabel.TabIndex = 1;
@@ -328,7 +331,7 @@
             // editorPicture
             // 
             editorPicture.Image = (Image)resources.GetObject("editorPicture.Image");
-            editorPicture.Location = new Point(3, 3);
+            editorPicture.Location = new Point(3, 0);
             editorPicture.Name = "editorPicture";
             editorPicture.Size = new Size(64, 64);
             editorPicture.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -423,8 +426,8 @@
             topPanel.PerformLayout();
             topSearhEditPanel.ResumeLayout(false);
             topSearhEditPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)searchImage).EndInit();
-            ((System.ComponentModel.ISupportInitialize)eraser).EndInit();
             ((System.ComponentModel.ISupportInitialize)synchronization).EndInit();
             ((System.ComponentModel.ISupportInitialize)staffPicture).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -440,10 +443,8 @@
 
         private Panel topPanel;
         private Label staffLabel;
-        private PictureBox staffPicture;
         private Panel topSearhEditPanel;
         private PictureBox searchImage;
-        private PictureBox eraser;
         private PictureBox synchronization;
         private TextBox textBoxSearch;
         private DataGridView dataGridView1;
@@ -470,5 +471,7 @@
         private Button EditStuffButton;
         private Button DeleteStuffButton;
         private Button NewStuffButton;
+        private PictureBox staffPicture;
+        private PictureBox pictureBox1;
     }
 }

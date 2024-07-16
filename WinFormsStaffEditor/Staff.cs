@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace WinFormsStaffEditor;
 
@@ -9,7 +10,7 @@ public partial class Staff
     /// уникальный id в базе
     /// </summary>
     public uint Id { get; set; }
-
+    [ConcurrencyCheck]
     /// <summary>
     /// Имя
     /// </summary>
