@@ -50,6 +50,10 @@ namespace WinFormsStaffEditor
             {
                 MessageBox.Show("В поле СНИЛС должны содержаться только цифры!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            else if (SnilsField.Text.Length < 10 || SnilsField.Text.Length > 11)
+            {
+                MessageBox.Show("Длина значения должна быть между 10 и 11 символами", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             else
             {
                 Staff newEmployee = new Staff
