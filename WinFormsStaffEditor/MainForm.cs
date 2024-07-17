@@ -242,52 +242,49 @@ namespace WinFormsStaffEditor
             var isSnilsExist = staffDataBase.Staff.Where(r => r.Snils == Snils);
             bool sameRow = false;
 
-            try
-            {
-                foreach(Staff stuff in isSnilsExist)
-                {
-                    if(stuff.Id == Convert.ToUInt32(ID))
-                        sameRow = true;
-                }
             
-                if (isSnilsExist.Any() && !sameRow)
-                {
-                    MessageBox.Show("Введеный снилс уже сущесвует в базе данных", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (!DateOnly.TryParseExact(BirthDateField.Text, dateFormat, DateTimeFormatInfo.InvariantInfo, DateTimeStyles.None, out BirthDate)
-                    || !DateOnly.TryParseExact(EmploymentDateField.Text, dateFormat, DateTimeFormatInfo.InvariantInfo, DateTimeStyles.None, out EmploymentDate))
-                {
-                    MessageBox.Show("Введите дату в указаном формате: ГГГГ-ММ-ДД", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else if (!double.TryParse(SnilsField.Text, out double num))
-                {
-                    MessageBox.Show("В поле СНИЛС должны содержаться только цифры!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else if (state == RowState.New)
-                {
-                    dataGridView1.Rows[selectedRowIndex].SetValues(dataGridView1.Rows[selectedRowIndex].Cells["id"].Value, Surname, Name, Patronymic,
-                                                                    BirthDate, Snils, Position, EmploymentDate);
-                    dataGridView1.Rows[selectedRowIndex].Cells["isNew"].Value = RowState.ModifidedNew;
-                    return;
-                }
-                else
-                {
-                    dataGridView1.Rows[selectedRowIndex].SetValues(dataGridView1.Rows[selectedRowIndex].Cells["id"].Value, Surname, Name, Patronymic,
-                                                                    BirthDate, Snils, Position, EmploymentDate);
-                    dataGridView1.Rows[selectedRowIndex].Cells["isNew"].Value = RowState.Modifided;
-                    return;
-                }
-            }
-            catch (DbUpdateConcurrencyException ex)
+            foreach(Staff stuff in isSnilsExist)
             {
-                var entry = ex.Entries.Single();
-                var databaseValues = (Staff)entry.GetDatabaseValues().ToObject();
-                var clientValues = (Staff)entry.Entity;
-                if(databaseValues.Surname != clientValues.Surname)
-                   MessageBox.Show("Данные уже изменены! Обновите базу","Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if(stuff.Id == Convert.ToUInt32(ID))
+                    sameRow = true;
             }
+            
+            if (isSnilsExist.Any() && !sameRow)
+            {
+                MessageBox.Show("Введеный снилс уже сущесвует в базе данных", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (SnilsField.Text.Length < 10 || SnilsField.Text.Length > 11)
+            {
+                MessageBox.Show("Длина значения должна быть между 10 и 11 символами", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!DateOnly.TryParseExact(BirthDateField.Text, dateFormat, DateTimeFormatInfo.InvariantInfo, DateTimeStyles.None, out BirthDate)
+                || !DateOnly.TryParseExact(EmploymentDateField.Text, dateFormat, DateTimeFormatInfo.InvariantInfo, DateTimeStyles.None, out EmploymentDate))
+            {
+                MessageBox.Show("Введите дату в указаном формате: ГГГГ-ММ-ДД", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (!double.TryParse(SnilsField.Text, out double num))
+            {
+                MessageBox.Show("В поле СНИЛС должны содержаться только цифры!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (state == RowState.New)
+            {
+                dataGridView1.Rows[selectedRowIndex].SetValues(dataGridView1.Rows[selectedRowIndex].Cells["id"].Value, Surname, Name, Patronymic,
+                                                                BirthDate, Snils, Position, EmploymentDate);
+                dataGridView1.Rows[selectedRowIndex].Cells["isNew"].Value = RowState.ModifidedNew;
+                return;
+            }
+            else
+            {
+                dataGridView1.Rows[selectedRowIndex].SetValues(dataGridView1.Rows[selectedRowIndex].Cells["id"].Value, Surname, Name, Patronymic,
+                                                                BirthDate, Snils, Position, EmploymentDate);
+                dataGridView1.Rows[selectedRowIndex].Cells["isNew"].Value = RowState.Modifided;
+                return;
+            }
+            
         }
 
         private void EditStuffButton_Click(object sender, EventArgs e)
